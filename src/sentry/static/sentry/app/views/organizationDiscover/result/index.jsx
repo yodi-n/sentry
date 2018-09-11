@@ -122,6 +122,13 @@ export default class Result extends React.Component {
       truncate: 80,
     };
 
+    const chartGrid = {
+      top: 24,
+      bottom: 40,
+      left: '5%',
+      right: '5%',
+    };
+    
     return (
       <div>
         <Flex align="center" mb={space(2)}>
@@ -134,17 +141,32 @@ export default class Result extends React.Component {
         {view === 'table' && <Table data={data} query={query} />}
         {view === 'line' && (
           <ChartWrapper>
-            <LineChart series={basicChartData} height={300} tooltip={tooltipOptions} />
+            <LineChart
+              series={basicChartData}
+              height={300}
+              tooltip={tooltipOptions}
+              grid={chartGrid}
+            />
           </ChartWrapper>
         )}
         {view === 'bar' && (
           <ChartWrapper>
-            <BarChart series={basicChartData} height={300} tooltip={tooltipOptions} />
+            <BarChart
+              series={basicChartData}
+              height={300}
+              tooltip={tooltipOptions}
+              grid={chartGrid}
+            />
           </ChartWrapper>
         )}
         {view === 'line-by-day' && (
           <ChartWrapper>
-            <LineChart series={byDayChartData} height={300} tooltip={tooltipOptions} />
+            <LineChart
+              series={byDayChartData}
+              height={300}
+              tooltip={tooltipOptions}
+              grid={chartGrid}
+            />
             {this.renderNote()}
           </ChartWrapper>
         )}
@@ -155,6 +177,7 @@ export default class Result extends React.Component {
               stacked={true}
               height={300}
               tooltip={tooltipOptions}
+              grid={chartGrid}
             />
             {this.renderNote()}
           </ChartWrapper>
