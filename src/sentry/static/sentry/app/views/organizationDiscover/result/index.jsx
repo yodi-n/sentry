@@ -109,6 +109,13 @@ export default class Result extends React.Component {
     return <Note>{t(`Displaying up to ${NUMBER_OF_SERIES_BY_DAY} results`)}</Note>;
   }
 
+  truncate(string) {
+    if (string.length > 60) {
+      return string.substring(0, 60);
+    }
+    return string;
+  }
+
   render() {
     const {data, query, chartQuery, chartData} = this.props;
     const {view} = this.state;
@@ -117,16 +124,13 @@ export default class Result extends React.Component {
 
     const byDayChartData = chartData && getChartDataByDay(chartData.data, chartQuery);
 
+    const legendData = byDayChartData
+      ? byDayChartData.map(entry => this.truncate(entry.seriesName))
+      : null;
+
     const tooltipOptions = {
       filter: value => value !== null,
       truncate: 80,
-    };
-
-    const chartGrid = {
-      top: 24,
-      bottom: 40,
-      left: '5%',
-      right: '5%',
     };
 
     return (
@@ -145,7 +149,7 @@ export default class Result extends React.Component {
               series={basicChartData}
               height={300}
               tooltip={tooltipOptions}
-              grid={chartGrid}
+              legend={{data: ['count']}}
             />
           </ChartWrapper>
         )}
@@ -155,7 +159,7 @@ export default class Result extends React.Component {
               series={basicChartData}
               height={300}
               tooltip={tooltipOptions}
-              grid={chartGrid}
+              legend={{data: ['count']}}
             />
           </ChartWrapper>
         )}
@@ -165,7 +169,7 @@ export default class Result extends React.Component {
               series={byDayChartData}
               height={300}
               tooltip={tooltipOptions}
-              grid={chartGrid}
+              legend={legendData ? {data: legendData} : null}
             />
             {this.renderNote()}
           </ChartWrapper>
@@ -177,7 +181,7 @@ export default class Result extends React.Component {
               stacked={true}
               height={300}
               tooltip={tooltipOptions}
-              grid={chartGrid}
+              legend={legendData ? {data: legendData} : null}
             />
             {this.renderNote()}
           </ChartWrapper>
@@ -193,8 +197,7 @@ const Results = styled('div')`
 `;
 
 const ChartWrapper = styled(Panel)`
-  padding-left: ${space(3)};
-  padding-right: ${space(3)};
+  padding: ${space(3)} ${space(2)};
 `;
 
 const Summary = styled(Box)`
@@ -207,5 +210,4 @@ const Note = styled(Box)`
   text-align: center;
   font-size: ${p => p.theme.fontSizeMedium};
   color: ${p => p.theme.gray3};
-  margin-bottom: ${space(3)};
 `;

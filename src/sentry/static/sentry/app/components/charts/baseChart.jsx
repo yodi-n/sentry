@@ -13,6 +13,7 @@ import LineSeries from './series/lineSeries';
 import Tooltip from './components/tooltip';
 import YAxis from './components/yAxis';
 import XAxis from './components/xAxis';
+import Legend from './components/legend';
 
 // If dimension is a number conver it to pixels, otherwise use dimension without transform
 const getDimensionValue = dimension => {
@@ -132,6 +133,7 @@ class BaseChart extends React.Component {
       colors,
       grid,
       tooltip,
+      legend,
       series,
       yAxis,
       xAxis,
@@ -177,6 +179,7 @@ class BaseChart extends React.Component {
           color: colors || this.getColorPalette(),
           grid: Grid(grid),
           tooltip: tooltip !== null ? Tooltip({isGroupedByDate, ...tooltip}) : null,
+          legend: legend !== null ? Legend(legend) : null,
           yAxis: yAxis !== null ? YAxis(yAxis) : null,
           xAxis:
             xAxis !== null
