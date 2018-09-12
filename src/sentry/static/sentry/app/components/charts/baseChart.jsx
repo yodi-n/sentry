@@ -51,6 +51,9 @@ class BaseChart extends React.Component {
     // ECharts Grid options
     grid: SentryTypes.EChartsGrid,
 
+    // Chart legend
+    legend: PropTypes.object,
+
     // Chart height
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
