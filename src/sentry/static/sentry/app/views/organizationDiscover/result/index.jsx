@@ -128,9 +128,9 @@ export default class Result extends React.Component {
       left: '5%',
       right: '5%',
     };
-    
+
     return (
-      <div>
+      <Results>
         <Flex align="center" mb={space(2)}>
           <Box flex="1">
             <Heading>{t('Result')}</Heading>
@@ -183,10 +183,14 @@ export default class Result extends React.Component {
           </ChartWrapper>
         )}
         {this.renderSummary()}
-      </div>
+      </Results>
     );
   }
 }
+
+const Results = styled('div')`
+  flex: 1;
+`;
 
 const ChartWrapper = styled(Panel)`
   padding-left: ${space(3)};
