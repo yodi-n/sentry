@@ -110,8 +110,8 @@ export default class Result extends React.Component {
   }
 
   truncate(string) {
-    if (string.length > 60) {
-      return string.substring(0, 60);
+    if (string.length > 80) {
+      return string.substring(0, 80);
     }
     return string;
   }

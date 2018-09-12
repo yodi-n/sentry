@@ -680,6 +680,11 @@ export const EChartsGrid = PropTypes.shape({
   tooltip: EChartsTooltip,
 });
 
+export const EChartsLegend = PropTypes.shape({
+  // Show legend on chart
+  show: PropTypes.bool,
+});
+
 export const SeriesUnit = PropTypes.shape({
   seriesName: PropTypes.string,
   data: PropTypes.arrayOf(
@@ -731,6 +736,7 @@ let SentryTypes = {
   EChartsYAxis: EChartsAxis,
   EChartsTooltip,
   EChartsGrid,
+  EChartsLegend,
 };
 
 export default SentryTypes;
