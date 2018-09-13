@@ -771,7 +771,6 @@ SENTRY_FEATURES = {
     'organizations:invite-members': True,
     'organizations:new-settings': True,
     'organizations:require-2fa': False,
-    'organizations:environments': False,
     'organizations:internal-catchall': False,
     'organizations:new-issue-ui': True,
     'organizations:github-enterprise': True,
