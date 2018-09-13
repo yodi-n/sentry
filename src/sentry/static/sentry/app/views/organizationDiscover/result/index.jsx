@@ -109,13 +109,6 @@ export default class Result extends React.Component {
     return <Note>{t(`Displaying up to ${NUMBER_OF_SERIES_BY_DAY} results`)}</Note>;
   }
 
-  truncate(string) {
-    if (string.length > 80) {
-      return string.substring(0, 80);
-    }
-    return string;
-  }
-
   render() {
     const {data, query, chartQuery, chartData} = this.props;
     const {view} = this.state;
@@ -125,7 +118,7 @@ export default class Result extends React.Component {
     const byDayChartData = chartData && getChartDataByDay(chartData.data, chartQuery);
 
     const legendData = byDayChartData
-      ? byDayChartData.map(entry => this.truncate(entry.seriesName))
+      ? byDayChartData.map(entry => entry.seriesName)
       : null;
 
     const tooltipOptions = {
@@ -181,7 +174,7 @@ export default class Result extends React.Component {
               stacked={true}
               height={300}
               tooltip={tooltipOptions}
-              legend={legendData ? {data: legendData} : null}
+              legend={legendData ? {data: legendData, type: 'scroll'} : null}
             />
             {this.renderNote()}
           </ChartWrapper>

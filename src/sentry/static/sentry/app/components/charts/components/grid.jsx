@@ -10,6 +10,8 @@ export default function Grid(props = {}) {
     // This should allow for sufficient space for Y-axis labels
     left: '3%',
     right: '3%',
+    padding: 5,
+    itemGap: 25,
     ...props,
   };
 }
