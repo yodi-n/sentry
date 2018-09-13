@@ -142,7 +142,7 @@ export default class Result extends React.Component {
               series={basicChartData}
               height={300}
               tooltip={tooltipOptions}
-              legend={{data: ['count']}}
+              legend={{data: [query.aggregations[0][2]]}}
             />
           </ChartWrapper>
         )}
@@ -152,7 +152,7 @@ export default class Result extends React.Component {
               series={basicChartData}
               height={300}
               tooltip={tooltipOptions}
-              legend={{data: ['count']}}
+              legend={{data: [query.aggregations[0][2]]}}
             />
           </ChartWrapper>
         )}
@@ -174,7 +174,7 @@ export default class Result extends React.Component {
               stacked={true}
               height={300}
               tooltip={tooltipOptions}
-              legend={legendData ? {data: legendData, type: 'scroll'} : null}
+              legend={legendData ? {data: legendData} : null}
             />
             {this.renderNote()}
           </ChartWrapper>

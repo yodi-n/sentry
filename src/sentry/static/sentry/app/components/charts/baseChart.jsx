@@ -52,7 +52,7 @@ class BaseChart extends React.Component {
     grid: SentryTypes.EChartsGrid,
 
     // Chart legend
-    legend: PropTypes.object,
+    legend: SentryTypes.EChartsLegend,
 
     // Chart height
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
